@@ -21,3 +21,11 @@ lr_discriminator = 0.002
 # Network Params
 image_dim = 784 # 28*28 pixels * 1 channel
 noise_dim = 100 # Noise data points
+
+
+# Build Networks
+# Network Inputs
+noise_input = tf.placeholder(tf.float32, shape=[None, noise_dim])
+real_image_input = tf.placeholder(tf.float32, shape=[None, 28, 28, 1])
+# A boolean to indicate batch normalization if it is training or inference time
+is_training = tf.placeholder(tf.bool)
