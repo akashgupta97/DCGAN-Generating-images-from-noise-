@@ -29,3 +29,8 @@ noise_input = tf.placeholder(tf.float32, shape=[None, noise_dim])
 real_image_input = tf.placeholder(tf.float32, shape=[None, 28, 28, 1])
 # A boolean to indicate batch normalization if it is training or inference time
 is_training = tf.placeholder(tf.bool)
+
+
+#LeakyReLU activation
+def leakyrelu(x, alpha=0.2):
+    return 0.5 * (1 + alpha) * x + 0.5 * (1 - alpha) * abs(x)
