@@ -34,3 +34,16 @@ is_training = tf.placeholder(tf.bool)
 #LeakyReLU activation
 def leakyrelu(x, alpha=0.2):
     return 0.5 * (1 + alpha) * x + 0.5 * (1 - alpha) * abs(x)
+
+
+# Generator Network
+# Input: Noise, Output: Image
+# Note that batch normalization has different behavior at training and inference time,
+# we then use a placeholder to indicates the layer if we are training or not.
+def generator(x, reuse=False):
+    with tf.variable_scope('Generator', reuse=reuse):
+        # TensorFlow Layers automatically create variables and calculate their
+        # shape, based on the input.
+        x = tf.layers.dense(x, units=7 * 7 * 128)
+        x = tf.layers.batch_normalization(x, training=is_training)
+        x = tf.nn.relu(x)
