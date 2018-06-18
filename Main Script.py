@@ -54,3 +54,8 @@ def generator(x, reuse=False):
         x = tf.layers.conv2d_transpose(x, 64, 5, strides=2, padding='same')
         x = tf.layers.batch_normalization(x, training=is_training)
         x = tf.nn.relu(x)
+        # Deconvolution, image shape: (batch, 28, 28, 1)
+        x = tf.layers.conv2d_transpose(x, 1, 5, strides=2, padding='same')
+        # Apply tanh for better stability - clip values to [-1, 1].
+        x = tf.nn.tanh(x)
+        return x
