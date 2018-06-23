@@ -72,3 +72,11 @@ def discriminator(x, reuse=False):
         x = tf.layers.conv2d(x, 128, 5, strides=2, padding='same')
         x = tf.layers.batch_normalization(x, training=is_training)
         x = leakyrelu(x)
+        # Flatten
+        x = tf.reshape(x, shape=[-1, 7 * 7 * 128])
+        x = tf.layers.dense(x, 1024)
+        x = tf.layers.batch_normalization(x, training=is_training)
+        x = leakyrelu(x)
+        # Output 2 classes: Real and Fake images
+        x = tf.layers.dense(x, 2)
+    return x
