@@ -80,3 +80,7 @@ def discriminator(x, reuse=False):
         # Output 2 classes: Real and Fake images
         x = tf.layers.dense(x, 2)
     return x
+
+
+# Build Generator Network
+gen_sample = generator(noise_input)
