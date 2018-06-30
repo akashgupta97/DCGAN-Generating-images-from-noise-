@@ -89,3 +89,13 @@ gen_sample = generator(noise_input)
 # Build 2 Discriminator Networks (one from noise input, one from generated samples)
 disc_real = discriminator(real_image_input)
 disc_fake = discriminator(gen_sample, reuse=True)
+
+# Build the stacked generator/discriminator
+stacked_gan = discriminator(gen_sample, reuse=True)
+
+# Build Loss (Labels for real images: 1, for fake images: 0)
+# Discriminator Loss for real and fake samples
+disc_loss_real = tf.reduce_mean(tf.nn.sparse_softmax_cross_entropy_with_logits(
+    logits=disc_real, labels=tf.ones([batch_size], dtype=tf.int32)))
+disc_loss_fake = tf.reduce_mean(tf.nn.sparse_softmax_cross_entropy_with_logits(
+    logits=disc_fake, labels=tf.zeros([batch_size], dtype=tf.int32)))
