@@ -99,3 +99,9 @@ disc_loss_real = tf.reduce_mean(tf.nn.sparse_softmax_cross_entropy_with_logits(
     logits=disc_real, labels=tf.ones([batch_size], dtype=tf.int32)))
 disc_loss_fake = tf.reduce_mean(tf.nn.sparse_softmax_cross_entropy_with_logits(
     logits=disc_fake, labels=tf.zeros([batch_size], dtype=tf.int32)))
+
+# Sum both loss
+disc_loss = disc_loss_real + disc_loss_fake
+# Generator Loss (The generator tries to fool the discriminator, thus labels are 1)
+gen_loss = tf.reduce_mean(tf.nn.sparse_softmax_cross_entropy_with_logits(
+    logits=stacked_gan, labels=tf.ones([batch_size], dtype=tf.int32)))
