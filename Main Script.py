@@ -109,3 +109,11 @@ gen_loss = tf.reduce_mean(tf.nn.sparse_softmax_cross_entropy_with_logits(
 # Build Optimizers
 optimizer_gen = tf.train.AdamOptimizer(learning_rate=lr_generator, beta1=0.5, beta2=0.999)
 optimizer_disc = tf.train.AdamOptimizer(learning_rate=lr_discriminator, beta1=0.5, beta2=0.999)
+
+# Training Variables for each optimizer
+# By default in TensorFlow, all variables are updated by each optimizer, so we
+# need to precise for each one of them the specific variables to update.
+# Generator Network Variables
+gen_vars = tf.get_collection(tf.GraphKeys.TRAINABLE_VARIABLES, scope='Generator')
+# Discriminator Network Variables
+disc_vars = tf.get_collection(tf.GraphKeys.TRAINABLE_VARIABLES, scope='Discriminator')
