@@ -128,3 +128,6 @@ with tf.control_dependencies(gen_update_ops):
 disc_update_ops = tf.get_collection(tf.GraphKeys.UPDATE_OPS, scope='Discriminator')
 with tf.control_dependencies(disc_update_ops):
     train_disc = optimizer_disc.minimize(disc_loss, var_list=disc_vars)
+
+# Initialize the variables (i.e. assign their default value)
+init = tf.global_variables_initializer()
