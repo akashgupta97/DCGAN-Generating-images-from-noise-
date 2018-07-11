@@ -141,3 +141,10 @@ sess.run(init)
 
 # Training
 for i in range(1, num_steps + 1):
+    # Prepare Input Data
+    # Get the next batch of MNIST data (only images are needed, not labels)
+    batch_x, _ = mnist.train.next_batch(batch_size)
+    batch_x = np.reshape(batch_x, newshape=[-1, 28, 28, 1])
+    # Rescale to [-1, 1], the input range of the discriminator
+    batch_x = batch_x * 2. - 1.
+    
