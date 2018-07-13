@@ -147,4 +147,7 @@ for i in range(1, num_steps + 1):
     batch_x = np.reshape(batch_x, newshape=[-1, 28, 28, 1])
     # Rescale to [-1, 1], the input range of the discriminator
     batch_x = batch_x * 2. - 1.
-    
+    # Discriminator Training
+    # Generate noise to feed to the generator
+    z = np.random.uniform(-1., 1., size=[batch_size, noise_dim])
+    _, dl = sess.run([train_disc, disc_loss], feed_dict={real_image_input: batch_x, noise_input: z, is_training: True})
