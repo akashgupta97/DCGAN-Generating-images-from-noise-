@@ -151,3 +151,10 @@ for i in range(1, num_steps + 1):
     # Generate noise to feed to the generator
     z = np.random.uniform(-1., 1., size=[batch_size, noise_dim])
     _, dl = sess.run([train_disc, disc_loss], feed_dict={real_image_input: batch_x, noise_input: z, is_training: True})
+    # Generator Training
+    # Generate noise to feed to the generator
+    z = np.random.uniform(-1., 1., size=[batch_size, noise_dim])
+    _, gl = sess.run([train_gen, gen_loss], feed_dict={noise_input: z, is_training: True})
+
+    if i % 500 == 0 or i == 1:
+        print('Step %i: Generator Loss: %f, Discriminator Loss: %f' % (i, gl, dl))
