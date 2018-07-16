@@ -158,3 +158,28 @@ for i in range(1, num_steps + 1):
 
     if i % 500 == 0 or i == 1:
         print('Step %i: Generator Loss: %f, Discriminator Loss: %f' % (i, gl, dl))
+
+'''
+
+Step 1: Generator Loss: 3.590350, Discriminator Loss: 1.907586
+Step 500: Generator Loss: 1.254698, Discriminator Loss: 1.005236
+Step 1000: Generator Loss: 1.730409, Discriminator Loss: 0.837684
+Step 1500: Generator Loss: 1.962198, Discriminator Loss: 0.618827
+Step 2000: Generator Loss: 2.767945, Discriminator Loss: 0.378071
+Step 2500: Generator Loss: 2.370605, Discriminator Loss: 0.561247
+Step 3000: Generator Loss: 3.427798, Discriminator Loss: 0.402951
+Step 3500: Generator Loss: 4.904454, Discriminator Loss: 0.554856
+Step 4000: Generator Loss: 4.045284, Discriminator Loss: 0.454970
+Step 4500: Generator Loss: 4.577699, Discriminator Loss: 0.687195
+Step 5000: Generator Loss: 3.476081, Discriminator Loss: 0.210492
+Step 5500: Generator Loss: 3.898139, Discriminator Loss: 0.143352
+Step 6000: Generator Loss: 4.089877, Discriminator Loss: 1.082561
+Step 6500: Generator Loss: 5.911457, Discriminator Loss: 0.154059
+Step 7000: Generator Loss: 3.594872, Discriminator Loss: 0.152970
+Step 7500: Generator Loss: 6.067883, Discriminator Loss: 0.084864
+Step 8000: Generator Loss: 6.737456, Discriminator Loss: 0.402566
+Step 8500: Generator Loss: 6.630128, Discriminator Loss: 0.034838
+Step 9000: Generator Loss: 6.480587, Discriminator Loss: 0.427419
+Step 9500: Generator Loss: 7.200409, Discriminator Loss: 0.124268
+Step 10000: Generator Loss: 5.479313, Discriminator Loss: 0.191389
+'''
