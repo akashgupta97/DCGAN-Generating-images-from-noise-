@@ -195,3 +195,10 @@ for i in range(n):
     z = np.random.uniform(-1., 1., size=[n, noise_dim])
     # Generate image from noise.
     g = sess.run(gen_sample, feed_dict={noise_input: z, is_training:False})
+    # Rescale values to the original [0, 1] (from tanh -> [-1, 1])
+    g = (g + 1.) / 2.
+    # Reverse colours for better display
+    g = -1 * (g - 1)
+    for j in range(n):
+        # Draw the generated digits
+        canvas[i * 28:(i + 1) * 28, j * 28:(j + 1) * 28] = g[j].reshape([28, 28])
