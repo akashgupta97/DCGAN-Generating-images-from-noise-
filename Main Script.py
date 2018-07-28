@@ -202,3 +202,7 @@ for i in range(n):
     for j in range(n):
         # Draw the generated digits
         canvas[i * 28:(i + 1) * 28, j * 28:(j + 1) * 28] = g[j].reshape([28, 28])
+
+plt.figure(figsize=(n, n))
+plt.imshow(canvas, origin="upper", cmap="gray")
+plt.show()
